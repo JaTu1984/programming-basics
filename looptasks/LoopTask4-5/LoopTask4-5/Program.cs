@@ -7,7 +7,7 @@ namespace LoopTask4_5
         static void Main(string[] args)
         {
             Random rnd = new Random();
-            int rndNumber;
+            double rndNumber;
             int i = 0;
 
             Console.WriteLine("Ohjelma tulostaa vakioveikkausrivin");
@@ -15,7 +15,12 @@ namespace LoopTask4_5
             do
             {
                 rndNumber = rnd.NextDouble();
-                Console.WriteLine($"{i + 1}.\t{rndNumber}\t");
+                if (rndNumber <= 0.4)
+                Console.WriteLine($"{i + 1}.\t1\t");
+                if (rndNumber >= 0.6)
+                Console.WriteLine($"{i + 1}.\t2\t");
+                else
+                Console.WriteLine($"{i + 1}.\tX\t");
                 i = i + 1; //i++
             } while (i < 13);
 

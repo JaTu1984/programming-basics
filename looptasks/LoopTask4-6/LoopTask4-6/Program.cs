@@ -13,16 +13,16 @@ namespace LoopTask4_6
             int i = 0;
             do
             {
-                rndNumber = rnd.Next(0, 6);
+                rndNumber = rnd.Next(1, 7);
                 Console.WriteLine($"{i + 1}.\t{rndNumber}\t");
                 i = i + 1; //i++
+                if (rndNumber == 6)
+
+                    sixes = sixes + 1;
+
             } while (i < 1000);
 
-            if (rndNumber = 6)
-
-                sixes = sixes + 1;
-
-            Console.WriteLine($"{sixes} kertaa");
+            Console.WriteLine($"Silmäluku kuusi {sixes} kertaa");
 
                
         }

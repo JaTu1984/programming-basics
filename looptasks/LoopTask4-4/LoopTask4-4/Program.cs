@@ -8,7 +8,7 @@ namespace LoopTask4_4
         {
             int throws = 0;
             Random rnd = new Random();
-            int rndNumber;
+            double rndNumber;
             int i = 0;
             int heads = 0;
             int tails = 0;
@@ -23,7 +23,7 @@ namespace LoopTask4_4
             {
                 rndNumber = rnd.NextDouble();
                 {
-                    if (rndNumber > 0,5)
+                    if (rndNumber < 0.5)
                     tails = tails + 1;
                     else
                     heads = heads + 1;
@@ -35,7 +35,6 @@ namespace LoopTask4_4
             Console.WriteLine($"Rahaa on heitetty {throws} kertaa");
             Console.WriteLine($"Klaavojen lukumäärä = {tails}");
             Console.WriteLine($"Kruunujen lukumäärä = {heads}");
-            Console.WriteLine($"{throws}");
 
             
             
