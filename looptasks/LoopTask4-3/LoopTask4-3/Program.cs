@@ -10,16 +10,20 @@ namespace LoopTask4_3
 
             Random rnd = new Random();
             int rndNumber;
-            int i = 0;
-            int j = 0;
-       
 
-            do
-            {
-                rndNumber = rnd.Next(0, 51);
-                Console.WriteLine($"{i + 1}.\t{rndNumber}\t");
-                i = i + 1; //i++
-            } while (i < 20);
+             {
+                for (int i = 1; i <= 4; i++)
+                {
+                    Console.Write($"{i}\t");
+                    for (int j = 1; j <= 5; j++)
+                    {
+                        rndNumber = rnd.Next(0, 51);
+                        Console.Write($"{rndNumber},\t");
+                    }
+                    Console.WriteLine();
+                }
+            }
         }
+        
     }
 }
