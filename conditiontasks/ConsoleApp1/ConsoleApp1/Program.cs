@@ -16,7 +16,7 @@ namespace ConsoleApp1
             else
                 if (luku1 < 0)
                 Console.WriteLine("Luku on negatiivinen");
-            else
+                else
                 Console.WriteLine("Luku on nolla");
 
             Console.ReadLine();
