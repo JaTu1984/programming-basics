@@ -26,7 +26,7 @@ namespace FunctionTask1
                     break;
                 }
             }
-            string asterisks = getNAsterisks;
+            string asterisks = getNAsterisks(n);
             Console.WriteLine(asterisks);
             Console.ReadKey();
         }
@@ -38,7 +38,7 @@ namespace FunctionTask1
             {
                 res += '*';
             }
-            return res; 
+            return res;
         }
     }
 }
