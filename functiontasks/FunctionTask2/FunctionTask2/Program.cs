@@ -6,14 +6,16 @@ namespace FunctionTask2
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Funktio palautta arvonaan kahdesta annetusta luvusta pienemmän");
+            Console.WriteLine("Funktio palauttaa arvonaan kahdesta annetusta luvusta pienemmän");
 
             int number1;
             int number2;
             int i = 0;
 
-            Console.WriteLine("Anna kokonaisluku: ");
-            
+            do
+                Console.WriteLine("Anna kokonaisluku: ");
+            while (i == 2);
+            i = i + 1;
 
             number1 = int.Parse(Console.ReadLine());
             number2 = int.Parse(Console.ReadLine());
@@ -26,7 +28,7 @@ namespace FunctionTask2
 
                 Console.WriteLine($"{number1} on pienempi kuin {number2}");
 
-            else
+            if (number1 == number2)
 
                 Console.WriteLine("Luvut ovat yhtä suuret");
         }
