@@ -11,10 +11,14 @@ namespace Itsearvio2
             string userInput = Console.ReadLine();
             
             int len = userInput.Length;
+            int k = 0;
 
-            Console.WriteLine(len);
+            Console.WriteLine($"Merkkien lukumäärä: {len}");
             for (int i = 0; i < len; i++)
-            Console.WriteLine($"{userInput}");
+            {
+                k = k + 1;
+                Console.WriteLine($"{k}. {userInput}");
+            }
             
         }
     }
