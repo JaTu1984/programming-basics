@@ -7,7 +7,7 @@ namespace Merkkijono1
         static void Main(string[] args)
         {
             Console.WriteLine("Ohjelma, joka ilmoittaa käyttäjän syöttämästä syötteestä merkkien lukumäärän.");
-            string userInput = Console.WriteLine("Syötä lause: ");
+            
             
 
             
