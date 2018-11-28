@@ -36,7 +36,7 @@ namespace Harjoitustyö
                             else
                                 Console.WriteLine("Viitenumero on virheellinen");
                             break;
-                        case 2:
+                        case 2:                       
                             Console.WriteLine();
                             Console.WriteLine("Syötä viitenumeron alkuosa");
                             userAddedReferenceNumber = Console.ReadLine();
@@ -54,17 +54,37 @@ namespace Harjoitustyö
                             string referenceNumber = "";
                             string refNumbers = "";
                             Console.WriteLine();
-                            Console.WriteLine("Syötä tiedostoon tulostettavien viitteiden lukumäärä");
-                            viitteet = int.Parse(Console.ReadLine());
-                            Console.WriteLine("Syötä viitteen alkuosa");
-                            referenceNumber = Console.ReadLine();
-                            for (i = 0; i < viitteet; i++)
+                            do
                             {
-                                refNumbers += $"{ViitenumeroTarkisteella(referenceNumber + i)}\r\n";
-                            }
-                            string path = @"C:\TEMP\referencenumber.txt";
-                            WriteToFile(path, refNumbers);
-                            Console.WriteLine("Viitenumerot luotu! Tarkista kansio C:/TEMP/referencenumber.txt");
+                                try
+                                {
+                                    Console.WriteLine("Syötä tiedostoon tulostettavien viitteiden lukumäärä");
+                                    viitteet = int.Parse(Console.ReadLine());
+                                    break;
+                                }
+                                catch (Exception ex)
+                                {
+                                    Console.WriteLine(ex.Message);
+                                }
+                            } while (true);
+                            do
+                            {
+                                Console.WriteLine("Syötä viitteen alkuosa");
+                                referenceNumber = Console.ReadLine();
+                                if (IsValidReferenceNumber(referenceNumber))
+
+                                {
+                                    for (i = 0; i < viitteet; i++)
+                                    {
+                                        refNumbers += $"{ViitenumeroTarkisteella(referenceNumber + i)}\r\n";
+                                    }
+                                    string path = @"C:\TEMP\referencenumber.txt";
+                                    WriteToFile(path, refNumbers);
+                                    Console.WriteLine("Viitenumerot luotu! Tarkista kansio C:/TEMP/referencenumber.txt");
+                                }
+                                else
+                                    Console.WriteLine("Virheellinen syöte");
+                            } while (i < viitteet);
                             break;
                         default:
                             Console.WriteLine(" Virhe!!!");
@@ -112,14 +132,12 @@ namespace Harjoitustyö
             }
             //Palautetaan viitteen alkuosa lisättynä lasketulla tarkisteella
             return alku + ((10 - summa % 10) % 10).ToString();
-
         }  /// <summary>
         /// Write to file by using StreamWriter Class
         /// Create a new file
         /// string filePath is 
         /// </summary>
         /// <param name="filePath"></param>
-
         static void WriteToFile(string filePath, string data)
         {
             using (StreamWriter sw = new StreamWriter(filePath))
