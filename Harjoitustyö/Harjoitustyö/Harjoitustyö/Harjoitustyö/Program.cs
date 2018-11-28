@@ -38,11 +38,11 @@ namespace Harjoitustyö
                             viitenumero = Console.ReadLine();
                             string output = viitenumero.Substring(viitenumero.Length - 1, 1);
                             Console.WriteLine($"{output}");
-                            string alkuosa = viitenumero.Substring(0, viitenumero.Length -1);
+                            string alkuosa = viitenumero.Substring(0, viitenumero.Length - 1);
                             Console.WriteLine($"{alkuosa}");
                             string output2 = ViitenumeroTarkisteella(alkuosa);
-                            if (output == output2.Substring(output2.Length-1,1))
-                            Console.WriteLine("Viitenumero on oikein");
+                            if (output == output2.Substring(output2.Length - 1, 1))
+                                Console.WriteLine("Viitenumero on oikein");
                             else
                                 Console.WriteLine("Viitenumero on virheellinen");
                             break;
@@ -50,8 +50,13 @@ namespace Harjoitustyö
                             Console.WriteLine();
                             Console.WriteLine("Syötä viitenumeron alkuosa");
                             userAddedReferenceNumber = Console.ReadLine();
-                            Console.WriteLine($"{ViitenumeroTarkisteella(userAddedReferenceNumber)}");
-                            Console.WriteLine("Viitenumero luotu");
+                            if (IsValidReferenceNumber(userAddedReferenceNumber))
+                            {
+                                Console.WriteLine($"{ViitenumeroTarkisteella(userAddedReferenceNumber)}");
+                                Console.WriteLine("Viitenumero luotu");
+                            }
+                            else
+                                Console.WriteLine("Syöte on virheellinen!");
                             break;
                         case 3:
                             int viitteet = 0;
@@ -63,14 +68,14 @@ namespace Harjoitustyö
                             viitteet = int.Parse(Console.ReadLine());
                             Console.WriteLine("Syötä viitteen alkuosa");
                             referenceNumber = Console.ReadLine();
-
                             for (i = 0; i < viitteet; i++)
-                            {
-                                refNumbers += $"{ViitenumeroTarkisteella(referenceNumber + i)}\n"; 
-                            }
-                            string path = @"C:\TEMP\referencenumber.json";
-                            WriteToFile(path, refNumbers);
-                            Console.WriteLine("Viitenumerot luotu! Tarkista kansio C:/TEMP/referencenumber.json");
+                                {
+                                    refNumbers += $"{ViitenumeroTarkisteella(referenceNumber + i)}\r\n";
+                                }
+                                    string path = @"C:\TEMP\referencenumber.txt";
+                                    WriteToFile(path, refNumbers);
+                                    Console.WriteLine("Viitenumerot luotu! Tarkista kansio C:/TEMP/referencenumber.txt");
+                                }
                             break;
                         default:
                             Console.WriteLine("Virhe!!!");
@@ -101,6 +106,20 @@ namespace Harjoitustyö
 
             Console.WriteLine();
 
+        }
+        /// <summary>
+        /// Tarkistaa syötetyn viitenumeron pituuden ja, että sisältää sallittuja merkkejä
+        /// Palauttaa arvon true tai false
+        /// </summary>
+        /// <param name="check"></param>
+        /// <returns></returns>
+        static bool IsValidReferenceNumber(string check)
+        {
+            bool retValue = false;
+            if (check.Length >= 3 && check.Length <= 19)
+                retValue = true;
+            retValue = int.TryParse(check, out int refNumber);
+            return retValue;
         }
         public static string ViitenumeroTarkisteella(string alku)
         {
