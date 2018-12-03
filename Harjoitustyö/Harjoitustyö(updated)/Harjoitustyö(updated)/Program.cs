@@ -16,7 +16,7 @@ namespace Harjoitustyö
 
             string userAddedReferenceNumber = "";
 
-            string viitenumero = "";
+            string refNumber = "";
 
             do
 
@@ -42,13 +42,13 @@ namespace Harjoitustyö
 
                             Console.WriteLine("Syötä viitenumero kokonaisuudessaan");
 
-                            viitenumero = Console.ReadLine();
+                            refNumber = Console.ReadLine();
 
-                            string output = viitenumero.Substring(viitenumero.Length - 1, 1);
+                            string output = refNumber.Substring(refNumber.Length - 1, 1);
 
                             Console.WriteLine($"{output}");
 
-                            string alkuosa = viitenumero.Substring(0, viitenumero.Length - 1);
+                            string alkuosa = refNumber.Substring(0, refNumber.Length - 1);
 
                             Console.WriteLine($"{alkuosa}");
 
@@ -90,7 +90,7 @@ namespace Harjoitustyö
 
                         case 3:
 
-                            int viitteet = 0;
+                            int references = 0;
 
                             int i = 0;
 
@@ -110,7 +110,7 @@ namespace Harjoitustyö
 
                                     Console.WriteLine("Syötä tiedostoon tulostettavien viitteiden lukumäärä");
 
-                                    viitteet = int.Parse(Console.ReadLine());
+                                    references = int.Parse(Console.ReadLine());
 
                                     break;
 
@@ -140,7 +140,7 @@ namespace Harjoitustyö
 
                                 {
 
-                                    for (i = 0; i < viitteet; i++)
+                                    for (i = 0; i < references; i++)
 
                                     {
 
@@ -160,7 +160,7 @@ namespace Harjoitustyö
 
                                     Console.WriteLine("Virheellinen syöte");
 
-                            } while (i < viitteet);
+                            } while (i < references);
 
                             break;
 
@@ -226,35 +226,35 @@ namespace Harjoitustyö
 
         }
 
-        public static string ViitenumeroTarkisteella(string alku)
+        public static string ViitenumeroTarkisteella(string begin)
 
         {
 
-            int summa = 0;
+            int sum = 0;
 
             //Viitestandarin mukaiset painotukset lopusta lukien (pl. tarkiste)
 
-            var painotus = new int[] { 7, 3, 1 };
+            var weight = new int[] { 7, 3, 1 };
 
             //painojen laskuri
 
-            int painoIndeksi = 0;
+            int weightIndex = 0;
 
             //Käydään merkit läpi lopusta alkuun (jolloin ei tarvitse välittää etunollista)
 
-            for (int c = alku.Length - 1; c >= 0; c--)
+            for (int c = begin.Length - 1; c >= 0; c--)
 
             {
 
-                summa += painotus[painoIndeksi++] * int.Parse(alku.Substring(c, 1));
+                sum += weight[weightIndex++] * int.Parse(begin.Substring(c, 1));
 
-                if (painoIndeksi >= painotus.Length) { painoIndeksi = 0; }
+                if (weightIndex >= weight.Length) { weightIndex = 0; }
 
             }
 
             //Palautetaan viitteen alkuosa lisättynä lasketulla tarkisteella
 
-            return alku + ((10 - summa % 10) % 10).ToString();
+            return begin + ((10 - sum % 10) % 10).ToString();
 
         }  /// <summary>
 
@@ -285,7 +285,6 @@ namespace Harjoitustyö
             }
 
         }
-
         static void UserInterface()
         {
             Console.WriteLine();
