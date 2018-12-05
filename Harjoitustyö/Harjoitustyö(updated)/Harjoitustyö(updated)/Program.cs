@@ -68,9 +68,10 @@ namespace Harjoitustyö
 
                             Console.WriteLine();
 
-                            Console.WriteLine("Syötä viitenumeron alkuosa");
+                            //Console.WriteLine("Syötä viitenumeron alkuosa");
+                           
 
-                            userAddedReferenceNumber = Console.ReadLine();
+                            userAddedReferenceNumber = Generator();
 
                             if (IsValidReferenceNumber(userAddedReferenceNumber))
 
@@ -153,7 +154,7 @@ namespace Harjoitustyö
                                     WriteToFile(path, refNumbers);
 
                                     Console.WriteLine("Viitenumerot luotu! Tarkista kansio C:/TEMP/referencenumber.txt");
-
+                                   
                                 }
 
                                 else
@@ -173,18 +174,18 @@ namespace Harjoitustyö
                     }
 
                 }
-
+                Delay(5);
                 //Console.Clear();
 
             } while (true);
 
         }
 
-        static void Delay()
+        static void Delay(int seconds)
 
         {
 
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < seconds; i++)
 
             {
 
@@ -193,24 +194,25 @@ namespace Harjoitustyö
                 System.Threading.Thread.Sleep(1000);
 
             }
-
-            Console.WriteLine();
+            Console.Clear();
+            //Console.WriteLine();
 
         }
+        
 
-        /// <summary>
+            /// <summary>
 
-        /// Tarkistaa syötetyn viitenumeron pituuden ja, että sisältää sallittuja merkkejä
+            /// Tarkistaa syötetyn viitenumeron pituuden ja, että sisältää sallittuja merkkejä
 
-        /// Palauttaa arvon true tai false
+            /// Palauttaa arvon true tai false
 
-        /// </summary>
+            /// </summary>
 
-        /// <param name="check"></param>
+            /// <param name="check"></param>
 
-        /// <returns></returns>
+            /// <returns></returns>
 
-        static bool IsValidReferenceNumber(string check)
+            static bool IsValidReferenceNumber(string check)
 
         {
 
@@ -287,7 +289,7 @@ namespace Harjoitustyö
         }
         static void UserInterface()
         {
-            Console.WriteLine();
+            //Console.WriteLine();
 
             Console.WriteLine("Kansallinen viitenumero");
 
@@ -298,6 +300,18 @@ namespace Harjoitustyö
             Console.WriteLine($"2. Haluan luoda kansallisen viitenumeron");
 
             Console.WriteLine($"3. Haluan määrittää monta viitenumeroa luodaan ja tulostetaan tiedostoon");
+        }
+        static string Generator()
+        {
+            Random rnd = new Random();
+            int length = rnd.Next(3, 19);
+            Console.WriteLine(length);
+            string refNumber = "";
+            for (int i = 0; i < length; i++)
+            {
+                refNumber += rnd.Next(10);
+            }
+            return refNumber;
         }
 
     }
